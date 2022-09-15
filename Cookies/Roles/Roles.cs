@@ -7,22 +7,16 @@ namespace Cookies.Roles
         public static string Admin = "Admin";
         public static string Customer = "Customer";
 
-        public static List<SelectListItem> GetRolesForDropDown(bool isAdmin)
+        public static List<SelectListItem> GetRolesForDropDown()
         {
-            if (isAdmin)
+
+            return new List<SelectListItem>
             {
-                return new List<SelectListItem>
-                {
-                    new SelectListItem{Value=Roles.Admin,Text=Roles.Admin}
-                };
-            }
-            else
-            {
-                return new List<SelectListItem>
-                {
-                    new SelectListItem{Value=Roles.Customer,Text=Roles.Customer},
-                };
-            }
+                new SelectListItem{Value = Roles.Admin,Text=Roles.Admin},
+                new SelectListItem{Value = Roles.Admin,Text=Roles.Customer}
+            };
+
+
         }
     }
 }

@@ -1,16 +1,17 @@
 ﻿@model Cookies.Models.Login
 
-<form method="post" asp-action="Login" asp-controller="Account">
+<div class="container">
+    <form method="post" asp-action="LoginUser" asp-controller="Account">
   <!-- Email input -->
   <div class="form-outline mb-4">
       <div asp-validation-summary="All" class="text-danger"></div>
-    <input type="email" asp-for="Email" id="form2Example1" class="form-control" />
+    <input asp-for="Email" id="form2Example1" class="form-control" />
     <label class="form-label" asp-for="Email">Email address</label>
   </div>
 
   <!-- Password input -->
   <div class="form-outline mb-4">
-    <input asp-for="Password" type="password" id="form2Example2" class="form-control" />
+    <input asp-for="Password" id="form2Example2" class="form-control" />
     <label class="form-label" asp-for="Password">Password</label>
   </div>
 
@@ -19,8 +20,8 @@
     <div class="col d-flex justify-content-center">
       <!-- Checkbox -->
       <div class="form-check">
-        <input class="form-check-input" asp-for="RememberMe" type="checkbox" value="" id="form2Example31" checked />
-        <label class="form-check-label" asp-for="RememberMe" for="form2Example31"> Remember me </label>
+        <input class="form-check-input" asp-for="RememberMe" id="form2Example31" checked />
+        <label class="form-check-label" asp-for="RememberMe"> Remember me </label>
       </div>
     </div>
 
@@ -35,7 +36,7 @@
 
   <!-- Register buttons -->
   <div class="text-center">
-    <p>Not a member? <a href="#!" asp-action="Register">Register</a></p>
+    <p>Not a member? <a asp-action="Register">Register</a></p>
     <p>or sign up with:</p>
     <button type="button" class="btn btn-link btn-floating mx-1">
       <i class="fab fa-facebook-f"></i>
@@ -54,3 +55,4 @@
     </button>
   </div>
 </form>
+</div>

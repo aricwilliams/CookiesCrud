@@ -14,7 +14,7 @@ namespace Cookies.Controllers
 
         public IActionResult Index()
         {
-            IEnumerable<CookieRecipes> objList = _db.CookieRecipies;
+            IEnumerable<CookieRecipes> objList = _db.CookieRecipes;
             return View(objList);
         }
     }

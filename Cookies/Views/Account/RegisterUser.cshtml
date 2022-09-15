@@ -1,7 +1,8 @@
 ﻿@model Cookies.Models.Register
 
-<h2>Sign Up</h2>
-<form method="post" asp-action="Register" asp-controller="Account">
+<div class="container">
+    <h2>Sign Up</h2>
+<form method="post" asp-action="RegisterUser" asp-controller="Account">
     @if (User.IsInRole(Cookies.Roles.Roles.Admin))
     {
         <h4>Register an admin account.</h4>
@@ -44,17 +45,22 @@
         <label class="col-md-2" asp-for="RoleName"></label>
         <div class=" col-md-10">
             <select asp-for="RoleName"
-                    asp-items="@Cookies.Roles.Roles.GetRolesForDropDown(User.IsInRole(Cookies.Roles.Roles.Admin))"
+                    asp-items="@Cookies.Roles.Roles.GetRolesForDropDown()"
                     class="form-control"></select>
             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-10 offset-md-2">
-            <input type="submit" value="Register" class="btn btn-success" />
+            <input type="submit" value="RegisterUser" class="btn btn-success" />
         </div>
     </div>
     <p class="col-md-10 offset-md-2">
-        <a asp-action="Login">Sign In</a>
+        <a asp-action="LoginUser">Sign In</a>
     </p>
 </form>
+</div>
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+
+}
