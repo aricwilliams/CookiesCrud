@@ -10,7 +10,8 @@ namespace Cookies.Data
         {
 
         }
-        public DbSet<CookieRecipes> CookieRecipes { get; set; }
+        public DbSet<AdminCookies> AdminCookies { get; set; }
+
 
     }
 }

@@ -4,15 +4,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Cookies.Models
 {
-    public class CookieRecipes
+    public class AdminCookies
     {
         [Key]
-        public string? Id { get; set; }
-       
+        public int Id { get; set; }
+        [NotMapped]
+        [DisplayName("Upload Yummy Cookie Image")]
+        public IFormFile? ImageFile { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? Recipe { get; set; }
         public string? Type { get; set; }
-
     }
 }

@@ -2,10 +2,14 @@
 @if (signInManager.IsSignedIn(User))
 {
     <form method="post" id="logoutForm" asp-action="Logoff" asp-controller="Account">
+
         <ul class="nav navbar-nav bg-dark">
-@*            <li class="text-white nav-link">Hello, @User.Identity.Name! </li>
-*@            <li><a class="text-white nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-        </ul>
+            <div class="row">
+                <div class="text-white col-md-6 ps-5 pt-2">Hello, @User.Identity.Name! </div>
+                <div class="col-md-6 me-auto"><a class="text-white nav-link text-end pe-5" href="javascript:document.getElementById('logoutForm').submit()">Log off</a></div>
+        
+            </div>
+            </ul>
     </form>
 }
 else
@@ -22,10 +26,10 @@ else
             <a class="nav-link text-white" id="registerLink" asp-controller="Home" asp-action="Index">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-white" id="loginLink" asp-controller="Account" asp-action="LoginUser">Sign In</a>
+            <a class="nav-link text-white" id="loginLink" asp-controller="Account" asp-action="Login">Sign In</a>
         </li>
          <li class="nav-item">
-            <a class="nav-link text-white" id="registerLink" asp-controller="Account" asp-action="RegisterUser">Register</a>
+            <a class="nav-link text-white" id="registerLink" asp-controller="Account" asp-action="Register">Register</a>
         </li>
       </ul>
     </div>

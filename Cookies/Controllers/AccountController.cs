@@ -21,12 +21,35 @@ namespace Cookies.Controllers
             _signInManager = signInManager;
         }
     
-        public IActionResult LoginUser()
+        public IActionResult Login()
         {
             return View();
         }
 
-        public async Task<IActionResult> RegisterUser()
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Login(Login model)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
+                if (result.Succeeded)
+                {
+                    
+                    return RedirectToAction("Index", "Home");
+                }
+                ModelState.AddModelError("", "Invalid login attempt");
+            }
+            return View(model);
+        }
+
+
+
+
+
+
+        public async Task<IActionResult> Register()
         {
             if(!_roleManager.RoleExistsAsync(Roles.Roles.Admin).GetAwaiter().GetResult())
             {
@@ -62,7 +85,7 @@ namespace Cookies.Controllers
                     {
                         TempData["newAdminSignUp"] = user.Name;
                     }
-                    return RedirectToAction("Index", "Appointment");
+                    return RedirectToAction("Index", "Home");
                 }
                 foreach (var error in result.Errors)
                 {
@@ -71,5 +94,14 @@ namespace Cookies.Controllers
             }
             return View(model);
         }
+
+
+        [HttpPost]
+        public async Task<IActionResult> LogOff()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Login", "Account");
+        }
     }
+
 }
