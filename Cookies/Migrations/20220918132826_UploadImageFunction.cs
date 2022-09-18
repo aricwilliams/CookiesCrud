@@ -4,7 +4,7 @@
 
 namespace Cookies.Migrations
 {
-    public partial class AddCookiesDBfix : Migration
+    public partial class UploadImageFunction : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

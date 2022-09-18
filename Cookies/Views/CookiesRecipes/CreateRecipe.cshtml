@@ -4,9 +4,16 @@
     
 <div class="container">
     <h2>Submit A Recipe</h2>
-<form method="post" asp-action="CreateRecipe" asp-controller="CookiesRecipes">
+<form method="post" asp-action="CreateRecipe" enctype="multipart/form-data" asp-controller="CookiesRecipes">
     <hr />
     <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group row">
+        <label class="col-md-2 custom-file-label" for="CookiePhoto"></label>
+        <div class=" col-md-10">
+            <input asp-for="CookiePhoto" type="file" id="customFile" class="form-control" />
+            <span asp-validation-for="CookiePhoto" class="text-danger"></span>
+        </div>
+    </div>
     <div class="form-group row">
         <label class="col-md-2" asp-for="Title"></label>
         <div class=" col-md-10">

@@ -1,13 +1,57 @@
-﻿
+﻿@model IEnumerable<Cookies.Models.AdminCookies>
+
+
 @if (User.IsInRole(Cookies.Roles.Roles.Admin))
-        {
-    <div class="row">
-        <h1>hey</h1>
+{
+    <div class="body-sec">
+        <div class="body container2 pt-5 m-auto">
+            <h3>Food Allergy Warning:</h3>
+            <p>Our cookies are made onsite and may come into contact with different allergens during production. Please be advised that any of our products may contain allergens including peanuts, tree nuts, milk, eggs, wheat, soy, and sesame. For additional nutritional information, please visit crumblcookies.com/nutrition.</p>
+            @if (Model.Count() > 0)
+            {
+                @foreach (var item in Model)
+                {
+                    <div class="card-1 mt-3">
+                        <div class="card-bg p-4">
+                            <div class="row cookie-img">
+                                <div class="col-4"><img @item.CookiePhoto></div>
+                                <div class="col-8">
+                                    <h3 class="col-8">@item.Title</h3>
+                                    <p>@item.Description</p>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="flex-container contains">
+                                <div class="flex-item pt-1"><h3>Contains:</h3></div>
+                                <div class="flex-item"><img src="/img/body-img/egg icon.svg"> Egg</div>
+                                <div class="flex-item"><img src="/img/body-img/milk icon.svg"> Milk</div>
+                                <div class="flex-item"><img src="/img/body-img/soy icon.svg"> Soy</div>
+                                <div class="flex-item"><img src="/img/body-img/treenut icon.svg"> Treenut</div>
+                                <div class="flex-item"><img src="/img/body-img/wheat icon.svg"> Wheat</div>
+
+                            </div>
+                            <hr>
+                            <div class="row recipe-total">
+                                <h3 class="col-6">View Nutritional Facts</h3>
+                                <p>@item.Recipe</p>
+                            </div>
+                            <a asp-action="Edit" asp-route-Id="@item.Id" class="mx-2">Edit Recipe</a>
+                            <a asp-action="Delete" asp-route-Id="@item.Id">Delete Recipe</a>
+
+                        </div>
+                    </div>
+                }
+
+            }
+            
+        </div>
     </div>
 }
 else
 {
     <div>
-            <h2>woop!</h2>
+        <h2>woop!</h2>
         </div>
 }
+
+

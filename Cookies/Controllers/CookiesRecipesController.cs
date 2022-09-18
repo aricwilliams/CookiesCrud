@@ -6,14 +6,17 @@ using System.Data;
 using System.Linq;
 
 
+
 namespace Cookies.Controllers
 {
     public class CookiesRecipesController : Controller
     {
         private readonly IAdminService _adminService;
-        public CookiesRecipesController(IAdminService adminService)
+        private readonly IWebHostEnvironment _webHostEnvironment;
+        public CookiesRecipesController(IAdminService adminService, IWebHostEnvironment webHostEnvironment)
         {
             _adminService = adminService;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public ActionResult Index()
@@ -51,7 +54,27 @@ namespace Cookies.Controllers
             return View(cookie);
         }
 
+        [HttpPost]
+        public IActionResult UploadImage(Image image)
+        {
+            foreach (var file in Request.Form.Files)
+            {
+                Image img = new Image();
+                img.ImageTitle = file.FileName;
 
+                MemoryStream ms = new MemoryStream();
+                file.CopyTo(ms);
+                img.ImageData = ms.ToArray();
+
+                ms.Close();
+                ms.Dispose();
+
+                _adminService.image.Add(img);
+                _adminService.SaveChanges();
+            }
+            return View("Index");
+
+        }
 
         public ActionResult Edit(int id)
         {
@@ -88,12 +111,16 @@ namespace Cookies.Controllers
             AdminCookies recipe = _adminService.GetCookieByID(id);
             return View(recipe);
         }
-        [HttpPost, ActionName("Delete")]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpPost, ActionName("DeleteConfirmed")]
+        public ActionResult DeleteConfirmed(int id, bool? saveChangesError)
         {
             try
             {
-                AdminCookies book = _adminService.GetCookieByID(id);
+                AdminCookies cookies = _adminService.GetCookieByID(id);
+                if (cookies == null)
+                {
+                    return RedirectToAction("Index");
+                }
                 _adminService.DeleteCookie(id);
                 _adminService.Save();
             }

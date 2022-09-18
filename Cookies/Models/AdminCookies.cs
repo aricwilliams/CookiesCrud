@@ -15,5 +15,8 @@ namespace Cookies.Models
         public string? Description { get; set; }
         public string? Recipe { get; set; }
         public string? Type { get; set; }
+        [Display( Name = "Choose the recipe image!")]
+        public byte[] CookiePhoto { get; set; }
+
     }
 }

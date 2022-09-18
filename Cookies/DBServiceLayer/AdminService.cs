@@ -15,12 +15,13 @@ namespace Cookies.DBServiceLayer
 
         public void CreateCookie(AdminCookies adminCookies)
         {
+
             _db.AdminCookies.Add(adminCookies);
         }
 
-        public void DeleteCookie(int cookieID)
+        public void DeleteCookie(int Id)
         {
-            AdminCookies cookie = _db.AdminCookies.Find(cookieID);
+            AdminCookies cookie = _db.AdminCookies.Find(Id);
             _db.AdminCookies.Remove(cookie);
         }
 
@@ -33,6 +34,7 @@ namespace Cookies.DBServiceLayer
         {
             return _db.AdminCookies.Find(id);
         }
+
 
         public void Save()
         {
