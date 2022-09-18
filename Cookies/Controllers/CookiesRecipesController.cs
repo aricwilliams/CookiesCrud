@@ -54,27 +54,6 @@ namespace Cookies.Controllers
             return View(cookie);
         }
 
-        [HttpPost]
-        public IActionResult UploadImage(Image image)
-        {
-            foreach (var file in Request.Form.Files)
-            {
-                Image img = new Image();
-                img.ImageTitle = file.FileName;
-
-                MemoryStream ms = new MemoryStream();
-                file.CopyTo(ms);
-                img.ImageData = ms.ToArray();
-
-                ms.Close();
-                ms.Dispose();
-
-                _adminService.image.Add(img);
-                _adminService.SaveChanges();
-            }
-            return View("Index");
-
-        }
 
         public ActionResult Edit(int id)
         {
