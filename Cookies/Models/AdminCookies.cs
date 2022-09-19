@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web;
 
 namespace Cookies.Models
 {
@@ -8,15 +9,15 @@ namespace Cookies.Models
     {
         [Key]
         public int Id { get; set; }
-        [NotMapped]
-        [DisplayName("Upload Yummy Cookie Image")]
-        public IFormFile? ImageFile { get; set; }
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? Recipe { get; set; }
         public string? Type { get; set; }
         [Display( Name = "Choose the recipe image!")]
-        public byte[] CookiePhoto { get; set; }
+        //[Required, Microsoft.Web.Mvc.FileExtensions(Extensions = "csv", ErrorMessage = "cookies/images")]
+        [NotMapped]
+        public IFormFile? CookiePhotoFile { get; set; }
+        public byte[]? CookiePhoto { get; set; }
 
     }
 }

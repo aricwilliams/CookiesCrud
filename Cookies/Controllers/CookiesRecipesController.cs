@@ -42,6 +42,11 @@ namespace Cookies.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    using (MemoryStream memoryStream = new MemoryStream())
+                    {
+                        cookie.CookiePhotoFile.CopyTo(memoryStream);
+                        cookie.CookiePhoto=memoryStream.ToArray();
+                    }
                     _adminService.CreateCookie(cookie);
                     _adminService.Save();
                     return RedirectToAction("Index");
