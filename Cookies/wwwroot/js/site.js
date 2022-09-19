@@ -31,11 +31,14 @@ window.onscroll = function () { scrollFunction() };
 
 function scrollFunction() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("logo-top").style.height = "80px";
-        document.getElementById("logo-sec-bg").style.height = "80px";
+        document.getElementById("logo-top").style.height = "120px";
+        document.getElementById("logo-sec-bg").style.height = "130px";
+
+
 
     } else {
-        document.getElementById("logo-top").style.height = "160px";
-        document.getElementById("logo-sec-bg").style.height = "170px";
+        document.getElementById("logo-top").style.height = "120px";
+        document.getElementById("logo-sec-bg").style.height = "130px";
+
     }
 }

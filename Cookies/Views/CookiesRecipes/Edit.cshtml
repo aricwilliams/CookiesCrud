@@ -1,71 +1,81 @@
 ﻿@model Cookies.Models.AdminCookies
 @if (User.IsInRole(Cookies.Roles.Roles.Admin))
-        {
-    
-<div class="container">
-    <h2>Edit Recipe</h2>
-<form method="post" asp-action="Edit" asp-controller="CookiesRecipes">
-    <input asp-for="Id" hidden/>
-    <hr />
-    <div asp-validation-summary="All" class="text-danger"></div>
-    <div class="form-group row">
-        <label class="col-md-2 custom-file-label" for="CookiePhoto"></label>
-        <div class=" col-md-10">
-            <input asp-for="CookiePhoto" id="customFile" class="form-control" />
-            <span asp-validation-for="CookiePhoto" class="text-danger"></span>
+{
+
+    <div class="container margin-bottom mt-5">
+        <h2>Edit Recipe</h2>
+    <form method="post" asp-action="Edit" enctype="multipart/form-data" asp-controller="CookiesRecipes">
+        <input asp-for="Id" hidden/>
+        <hr />
+        <div asp-validation-summary="All" class="text-danger"></div>
+       <div class="form-group row">
+                @{
+                    var imgSrc = "";
+                    if (@Model.CookiePhoto != null)
+                    {
+                        var base64 = Convert.ToBase64String(@Model.CookiePhoto);
+                        imgSrc = String.Format("data:image/png;base64,{0}", base64);
+                    }
+
+                }
+                                    <div class="col-4"><img src="@imgSrc"></div>
+            <label class="col-md-2 custom-file-label" for="CookiePhotoFile"></label>
+            <div class=" col-md-5">
+                <input asp-for="CookiePhotoFile" id="customFile" class="form-control" />
+                <span asp-validation-for="CookiePhotoFile" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-md-2" asp-for="Title"></label>
-        <div class=" col-md-10">
-            <input asp-for="Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
+        <div class="form-group row">
+            <label class="col-md-2" asp-for="Title"></label>
+            <div class=" col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-md-2" asp-for="Description"></label>
-        <div class=" col-md-10">
-            <input asp-for="Description" class="form-control" />
-            <span asp-validation-for="Description" class="text-danger"></span>
+        <div class="form-group row">
+            <label class="col-md-2" asp-for="Description"></label>
+            <div class=" col-md-10">
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-md-2" asp-for="Recipe"></label>
-        <div class=" col-md-10">
-            <input asp-for="Recipe" class="form-control" />
-            <span asp-validation-for="Recipe" class="text-danger"></span>
+        <div class="form-group row">
+            <label class="col-md-2" asp-for="Recipe"></label>
+            <div class=" col-md-10">
+                <input asp-for="Recipe" class="form-control" />
+                <span asp-validation-for="Recipe" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    <div class="form-group row">
-        <label class="col-md-2" asp-for="Type"></label>
-        <div class=" col-md-10">
-            <input asp-for="Type" class="form-control" />
-            <span asp-validation-for="Type" class="text-danger"></span>
+        <div class="form-group row">
+            <label class="col-md-2" asp-for="Type"></label>
+            <div class=" col-md-10">
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-10 offset-md-2">
-            <input type="submit" value="Update Recipe" class="btn btn-success" />
+        <div class="form-group">
+            <div class="col-md-10 offset-md-2">
+                <input type="submit" value="Update Recipe" class="btn btn-success" />
+            </div>
         </div>
-    </div>
-    <p class="col-md-10 offset-md-2">
-@*        <a asp-action="Recipe">Delete Recipe</a>
+        <p class="col-md-10 offset-md-2">
+                @*        <a asp-action="Recipe">Delete Recipe</a>
 *@    </p>
-</form>
-</div>
+    </form>
+    </div>
 }
 else
 {
-    <div>
-        <h1>Hooold Your Hourses buddy, you gotta be an Admin for this....</h1>
-    </div>
-    <p class="col-md-10 offset-md-2">
-        <a asp-action="CreateRecipe">Create Recipe</a>
-    </p>
+        <div>
+            <h1>Hooold Your Hourses buddy, you gotta be an Admin for this....</h1>
+        </div>
+        <p class="col-md-10 offset-md-2">
+            <a asp-action="CreateRecipe">Create Recipe</a>
+        </p>
 }
 
 
 @section Scripts{
-    <partial name="_ValidationScriptsPartial" />
+        <partial name="_ValidationScriptsPartial" />
 
 }

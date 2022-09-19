@@ -24,18 +24,23 @@ p {
 }
 
 .logo img {
-    height: 160px;
+    height: 120px;
 }
 
 .logo-top {
     transition: 0.3s;
 }
-
+.margin-bottom{
+    padding-bottom: 60px;
+}
 .logo-sec {
-    height: 170px;
+    height: 90px !important;
+    background-color: white;
+    
+}
+.logo {
     background-color: white;
 }
-
 .logo-sec-bg {
     transition: 0.3s;
 }
@@ -46,7 +51,7 @@ p {
 }
 
 .head-txt {
-    margin-top: 170px !important;
+    margin-top: 0px !important;
 }
 
 .nav-cookies {

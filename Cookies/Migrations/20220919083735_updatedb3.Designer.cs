@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Cookies.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220918140749_UploadImageFunction2")]
-    partial class UploadImageFunction2
+    [Migration("20220919083735_updatedb3")]
+    partial class updatedb3
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,7 +33,6 @@ namespace Cookies.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
                     b.Property<byte[]>("CookiePhoto")
-                        .IsRequired()
                         .HasColumnType("varbinary(max)");
 
                     b.Property<string>("Description")

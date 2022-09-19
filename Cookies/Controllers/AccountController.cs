@@ -37,7 +37,7 @@ namespace Cookies.Controllers
                 if (result.Succeeded)
                 {
                     
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "CookiesRecipes");
                 }
                 ModelState.AddModelError("", "Invalid login attempt");
             }
@@ -85,7 +85,7 @@ namespace Cookies.Controllers
                     {
                         TempData["newAdminSignUp"] = user.Name;
                     }
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "CookiesRecipes");
                 }
                 foreach (var error in result.Errors)
                 {

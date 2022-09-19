@@ -42,8 +42,7 @@
     
 <div class="container">
     <div class="header">
-        <div class="row align-items-center fixed-top logo-sec" id="logo-sec-bg">
-                    <partial name="_LoginPart"></partial>
+        <div class="row align-items-center logo-sec" id="logo-sec-bg">
 
             <div class="logo col-12 text-center"><img id="logo-top" src="/img/yummyCookie-Light.png"></div>
         </div>
@@ -57,10 +56,14 @@
             <h2 class="col-3">CRUMBL CREAM</h2>
         </div>
     </div>
+
 </div>
         <main role="main">
             @RenderBody()
         </main>
+        <partial name="_LoginPart"></partial>
+        
+
 <body>
   @*
     <script src="~/lib/jquery/dist/jquery.min.js"></script>

@@ -13,5 +13,6 @@ namespace Cookies.Data
         public DbSet<AdminCookies> AdminCookies { get; set; }
 
 
+
     }
 }

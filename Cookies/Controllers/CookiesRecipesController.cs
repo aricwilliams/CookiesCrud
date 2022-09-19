@@ -42,14 +42,10 @@ namespace Cookies.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    using (MemoryStream memoryStream = new MemoryStream())
-                    {
-                        cookie.CookiePhotoFile.CopyTo(memoryStream);
-                        cookie.CookiePhoto=memoryStream.ToArray();
-                    }
+                    cookie.GetCookiePhotoFile();
                     _adminService.CreateCookie(cookie);
                     _adminService.Save();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "CookiesRecipes");
                 }
             }
             catch (DataException)
@@ -72,9 +68,12 @@ namespace Cookies.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    //AdminCookies recipe = _adminService.GetCookieByID(cookie.Id);
+                    //cookie.CookiePhoto = recipe.CookiePhoto;
+                    cookie.GetCookiePhotoFile();
                     _adminService.UpdateRecipe(cookie);
                     _adminService.Save();
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Index", "CookiesRecipes");
                 }
             }
             catch (DataException)

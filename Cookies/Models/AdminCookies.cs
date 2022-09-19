@@ -13,11 +13,20 @@ namespace Cookies.Models
         public string? Description { get; set; }
         public string? Recipe { get; set; }
         public string? Type { get; set; }
-        [Display( Name = "Choose the recipe image!")]
+        [Display(Name = "Choose the recipe image!")]
         //[Required, Microsoft.Web.Mvc.FileExtensions(Extensions = "csv", ErrorMessage = "cookies/images")]
         [NotMapped]
         public IFormFile? CookiePhotoFile { get; set; }
         public byte[]? CookiePhoto { get; set; }
-
+        public void GetCookiePhotoFile()
+        {
+            if (CookiePhotoFile != null)
+                using (MemoryStream memoryStream = new MemoryStream())
+                {
+                    CookiePhotoFile.CopyTo(memoryStream);
+                    CookiePhoto = memoryStream.ToArray();
+                }
+        }
     }
+
 }

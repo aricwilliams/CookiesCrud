@@ -1,9 +1,9 @@
 ﻿@model Cookies.Models.Login
 
-<div class="container">
+<div class="container mb-5">
     <form method="post" asp-action="Login" asp-controller="Account">
   <!-- Email input -->
-  <div class="form-outline mb-4">
+  <div class="form-outline mb-4 pt-3">
       <div asp-validation-summary="All" class="text-danger"></div>
     <input asp-for="Email" id="form2Example1" class="form-control" />
     <label class="form-label" asp-for="Email">Email address</label>
@@ -25,18 +25,15 @@
       </div>
     </div>
 
-    <div class="col">
-      <!-- Simple link -->
-      <a href="#!">Forgot password?</a>
-    </div>
+      <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
   </div>
 
   <!-- Submit button -->
-  <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
 
   <!-- Register buttons -->
   <div class="text-center">
-    <p>Not a member? <a asp-action="Register">Register</a></p>
+  @*  <p>Not a member? <a asp-action="Register">Register</a></p>
     <p>or sign up with:</p>
     <button type="button" class="btn btn-link btn-floating mx-1">
       <i class="fab fa-facebook-f"></i>
@@ -52,7 +49,7 @@
 
     <button type="button" class="btn btn-link btn-floating mx-1">
       <i class="fab fa-github"></i>
-    </button>
+    </button>*@
   </div>
 </form>
 </div>

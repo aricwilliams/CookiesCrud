@@ -2,7 +2,7 @@
 @if (User.IsInRole(Cookies.Roles.Roles.Admin))
         {
     
-<div class="container">
+<div class="container margin-bottom mt-5">
     <h2>Submit A Recipe</h2>
 <form method="post" asp-action="CreateRecipe" enctype="multipart/form-data" asp-controller="CookiesRecipes">
     <hr />
@@ -44,12 +44,12 @@
     </div>
     <div class="form-group">
         <div class="col-md-10 offset-md-2">
-            <input type="submit" value="Recipe" class="btn btn-success" />
+            <input type="submit" value="Create Recipe" class="btn btn-success" />
         </div>
     </div>
-    <p class="col-md-10 offset-md-2">
+    @*<p class="col-md-10 offset-md-2">
         <a asp-action="CreateRecipe">Create Recipe</a>
-    </p>
+    </p>*@
 </form>
 </div>
 }
